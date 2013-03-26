@@ -1,0 +1,4 @@
+reportlab
+pyPdf
+uuid
+

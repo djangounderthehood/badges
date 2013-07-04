@@ -9,7 +9,7 @@ You can use to generate any type of pdf files which requires embedding different
 
 Just put your template pdf file, font file and csv file in the folder with the script and configure settings below
 
-To install or requirements:
+To install all requirements:
 pip install -r requirements.txt
 
 When you're done, just do:

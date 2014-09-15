@@ -28,7 +28,8 @@ from reportlab.lib.styles import getSampleStyleSheet, TA_CENTER
 from pyPdf import PdfFileWriter, PdfFileReader
 
 # fonts import
-pdfmetrics.registerFont(TTFont('Font', FONT_NAME))
+pdfmetrics.registerFont(TTFont('ThinFont', FONT_NAME[0]))
+pdfmetrics.registerFont(TTFont('RegularFont', FONT_NAME[1]))
 
 # data import
 data = csv.reader(open(CSV_FILE))
@@ -51,14 +52,29 @@ for row in data:
     styleN = stylesheet['Normal']
     styleN.alignment = TA_CENTER
     styleN.fontSize = FONT_SIZE
-    styleN.fontName = 'Font'
+    styleN.fontName = 'RegularFont'
     # changing the size of the font depending on the lenght of the word
 
-    p = Paragraph(u'<font color="black">' + item[COLUMN].decode('utf-8')+u'</font>', styleN)
+    p = Paragraph(u'<font color="black">' + item['Ticket First Name'].decode('utf-8')+u'</font>', styleN)
     # width/height of the paragraph
     w,h = p.wrap(width, height)
     # x/y axis when the paragraph should be added
     p.drawOn(c, 0, height-HPOSITION)
+
+    # word number 2
+    stylesheet=getSampleStyleSheet()
+    styleN = stylesheet['Normal']
+    styleN.alignment = TA_CENTER
+    styleN.fontSize = FONT_SIZE
+    styleN.fontName = 'ThinFont'
+    # changing the size of the font depending on the lenght of the word
+
+    p = Paragraph(u'<font color="black">' + item['Ticket Last Name'].decode('utf-8')+u'</font>', styleN)
+    # width/height of the paragraph
+    w,h = p.wrap(width, height)
+    # x/y axis when the paragraph should be added
+    p.drawOn(c, 0, height-HPOSITION-30)
+
 
     # saving canvas
     c.save()

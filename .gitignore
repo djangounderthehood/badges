@@ -2,4 +2,5 @@ output/
 zaproszenie.pdf
 goscie.csv
 .idea/
-
+*.pyc
+tito.csv

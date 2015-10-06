@@ -1,19 +1,5 @@
 # -*- encoding: utf-8 -*-
 
-'''
-HACKWAW badge generator
-
-It's just a very simple pdf generator. It takes csv file column and put each row text, formats it and inserts into the pdf.
-Obviously it will generate a lot of pdfs if you have a lot of rows in a csv file(it takes seconds to generate hundreds, so..)
-You can use to generate any type of pdf files which requires embedding different text in each file.
-
-Just put your template pdf file, font file and csv file in the folder with the script and configure settings below
-
-When you're done, just do:
-python generate.py
-
-'''
-
 from conf import *
 
 import StringIO
@@ -28,8 +14,10 @@ from reportlab.lib.styles import getSampleStyleSheet, TA_CENTER
 from pyPdf import PdfFileWriter, PdfFileReader
 
 # fonts import
-pdfmetrics.registerFont(TTFont('ThinFont', FONT_NAME[0]))
-pdfmetrics.registerFont(TTFont('RegularFont', FONT_NAME[1]))
+pdfmetrics.registerFont(TTFont('RegularFont', FONT_NAME[0]))
+pdfmetrics.registerFont(TTFont('SemiboldFont', FONT_NAME[1]))
+pdfmetrics.registerFont(TTFont('HeavyFont', FONT_NAME[2]))
+pdfmetrics.registerFont(TTFont('LightFont', FONT_NAME[3]))
 
 # data import
 data = csv.reader(open(CSV_FILE))
@@ -51,11 +39,11 @@ for row in data:
     stylesheet=getSampleStyleSheet()
     styleN = stylesheet['Normal']
     styleN.alignment = TA_CENTER
-    styleN.fontSize = FONT_SIZE
-    styleN.fontName = 'RegularFont'
+    styleN.fontSize = 35
+    styleN.fontName = 'HeavyFont'
     # changing the size of the font depending on the lenght of the word
 
-    p = Paragraph(u'<font color="black">' + item['Ticket First Name'].decode('utf-8')+u'</font>', styleN)
+    p = Paragraph(u'<font color="blue">' + item['FirstName'].upper().decode('utf-8')+u'</font>', styleN)
     # width/height of the paragraph
     w,h = p.wrap(width, height)
     # x/y axis when the paragraph should be added
@@ -65,15 +53,30 @@ for row in data:
     stylesheet=getSampleStyleSheet()
     styleN = stylesheet['Normal']
     styleN.alignment = TA_CENTER
-    styleN.fontSize = FONT_SIZE
-    styleN.fontName = 'ThinFont'
+    styleN.fontSize = 23
+    styleN.fontName = 'RegularFont'
     # changing the size of the font depending on the lenght of the word
 
-    p = Paragraph(u'<font color="black">' + item['Ticket Last Name'].decode('utf-8')+u'</font>', styleN)
+    p = Paragraph(u'<font color="blue">' + item['LastName'].upper().decode('utf-8')+u'</font>', styleN)
     # width/height of the paragraph
     w,h = p.wrap(width, height)
     # x/y axis when the paragraph should be added
-    p.drawOn(c, 0, height-HPOSITION-30)
+    p.drawOn(c, 0, height-HPOSITION-45)
+
+
+    # word number 3
+    stylesheet=getSampleStyleSheet()
+    styleN = stylesheet['Normal']
+    styleN.alignment = TA_CENTER
+    styleN.fontSize = 16
+    styleN.fontName = 'LightFont'
+    # changing the size of the font depending on the lenght of the word
+
+    p = Paragraph(u'<font color="blue">' + item['Description'].upper().decode('utf-8')+u'</font>', styleN)
+    # width/height of the paragraph
+    w,h = p.wrap(width, height)
+    # x/y axis when the paragraph should be added
+    p.drawOn(c, 0, height-HPOSITION-95)
 
 
     # saving canvas
@@ -87,8 +90,8 @@ for row in data:
     output.addPage(page)
 
     # saving file
-    if str(item[COLUMN]) != "" or GENERATE_EMPTY:
-        filename = item[COLUMN].replace(" ", "")[0:FILENAME_LENGTH] + fetch_code() + ".pdf"
+    if str(item['FirstName']) != "" or GENERATE_EMPTY:
+        filename = item['FirstName'].replace(" ", "")[0:FILENAME_LENGTH] + fetch_code() + ".pdf"
         outputStream = file("output/" + filename, "wb")
         output.write(outputStream)
         outputStream.close()

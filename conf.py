@@ -1,16 +1,15 @@
 # MANDATORY
 # pdf template
 PDF_TEMPLATE = 'template.pdf'
-PDF_SIZE = (210,295) # in pixels
+PDF_SIZE = (338,338) # in pixels
 
 # csv data
 CSV_FILE = 'guests.csv'
-COLUMN = 'Ticket First Name'
 
 # text properties
-FONT_NAME = ['fonts/Roboto-Thin.ttf', 'fonts/Roboto-Regular.ttf']
+FONT_NAME = ['fonts/Lato-Regular.ttf', 'fonts/Lato-Semibold.ttf', 'fonts/Lato-Heavy.ttf', 'fonts/Lato-Light.ttf']
 # hpostion is counted from the top
-HPOSITION = 202 # this means 160 pixels from the top, your text will be centered
+HPOSITION = 130 # pixels from the top, your text will be centered
 FONT_SIZE = 23
 
 

@@ -1,6 +1,6 @@
-# HACKWAW #4 Badge Generator
+# DUTH Badge Generator
 
-(Heavily based on wedding invitation generator by @83tb, which was based on HACKWAW's badge generator by @olasitarska, https://gist.github.com/olasitarska/5245471 :D)
+Heavily based on wedding invitation generator by @83tb, which was based on HACKWAW's badge generator by @olasitarska, https://gist.github.com/olasitarska/5245471.
 
 It's just a very simple pdf generator. It takes csv file column and put each row text, formats it and inserts into the pdf.
 Obviously it will generate a lot of pdfs if you have a lot of rows in a csv file (it takes seconds to generate hundreds, so..)

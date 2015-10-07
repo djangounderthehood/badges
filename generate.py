@@ -40,6 +40,8 @@ for row in data:
     styleN = stylesheet['Normal']
     styleN.alignment = TA_CENTER
     styleN.fontSize = 35
+    if len(item['FirstName']) >= 9:
+        styleN.fontSize = 30
     styleN.fontName = 'HeavyFont'
     # changing the size of the font depending on the lenght of the word
 
@@ -54,6 +56,8 @@ for row in data:
     styleN = stylesheet['Normal']
     styleN.alignment = TA_CENTER
     styleN.fontSize = 23
+    if len(item['LastName']) >= 16:
+        styleN.fontSize = 19
     styleN.fontName = 'RegularFont'
     # changing the size of the font depending on the lenght of the word
 

@@ -43,7 +43,7 @@ for row in data:
     styleN.fontName = 'HeavyFont'
     # changing the size of the font depending on the lenght of the word
 
-    p = Paragraph(u'<font color="blue">' + item['FirstName'].upper().decode('utf-8')+u'</font>', styleN)
+    p = Paragraph(u'<font color="blue">' + item['FirstName'].decode('utf-8').upper()+u'</font>', styleN)
     # width/height of the paragraph
     w,h = p.wrap(width, height)
     # x/y axis when the paragraph should be added
@@ -57,7 +57,7 @@ for row in data:
     styleN.fontName = 'RegularFont'
     # changing the size of the font depending on the lenght of the word
 
-    p = Paragraph(u'<font color="blue">' + item['LastName'].upper().decode('utf-8')+u'</font>', styleN)
+    p = Paragraph(u'<font color="blue">' + item['LastName'].decode('utf-8').upper()+u'</font>', styleN)
     # width/height of the paragraph
     w,h = p.wrap(width, height)
     # x/y axis when the paragraph should be added

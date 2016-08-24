@@ -1,4 +1,1 @@
-reportlab
-pyPdf
-uuid
-
+stereo

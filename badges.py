@@ -29,7 +29,7 @@ class RoleField(FirstNameField):
     top = 200
 
 
-class Badges(Layout):
+class Badge(Layout):
     data_file = 'guests.csv'
     template_file = 'template.pdf'
     output_dir = 'output'
